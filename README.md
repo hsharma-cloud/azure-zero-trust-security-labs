@@ -1,57 +1,78 @@
 # Azure Zero Trust Security Labs
 
 ## Overview
-
 This repository demonstrates the implementation of Zero Trust security architecture in Microsoft Azure. It includes hands-on labs covering virtual network segmentation, secure administrative access using Azure Bastion, private endpoint connectivity, network security enforcement with NSGs, and security posture evaluation with Microsoft Defender for Cloud. The environment is designed to reduce attack surface, enforce least-privilege access, and validate secure cloud configuration.
----
-
-## 🛡️ Key Implementations
-
-- Azure Virtual Network segmentation
-- Azure Bastion for secure administrative access
-- Network Security Groups (NSG) for traffic control
-- Private Endpoints to eliminate public exposure
-- Microsoft Defender for Cloud Secure Score validation
-- Governance best practices for subscription ownership
 
 ---
 
-## 🏗️ Architecture Summary
+## Architecture
 
-- VNet with segmented subnets
-- Bastion-enabled secure access
-- Application and database tier isolation
-- NSG-enforced least privilege networking
+### Virtual Network
+- **Name:** vnet-security-lab  
+- **Address space:** 10.0.0.0/16  
 
----
+### Subnets
 
-## 🎯 Skills Demonstrated
-
-✔ Zero Trust architecture  
-✔ Azure network security  
-✔ Attack surface reduction  
-✔ Cloud governance & resilience  
-✔ Security posture management  
+| Subnet | Address Range | Purpose |
+|--------|--------------|--------|
+| default | 10.0.0.0/24 | Management resources |
+| AzureBastionSubnet | 10.0.1.0/26 | Secure administrative access |
+| app-subnet | 10.0.2.0/24 | Application tier |
+| db-subnet | 10.0.3.0/24 | Database tier |
 
 ---
 
-## 🚀 Labs Included
+## Security Controls Implemented
 
-| Lab | Description |
-|-----|------------|
-| Network Segmentation | Multi-tier subnet design |
-| Bastion Secure Access | Admin access without public IP |
-| Private Endpoints | Secure service connectivity |
-| Defender for Cloud | Security posture assessment |
+### Azure Bastion
+- Secure administrative access without public IP exposure
+- Browser-based SSH/RDP connectivity
+- Reduces attack surface
+
+### Network Segmentation
+- Multi-tier subnet design
+- Isolation of application and database tiers
+- Supports least-privilege networking
+
+### Network Security Groups (NSG)
+- Applied to app-subnet
+- Default deny inbound blocks internet access
+- Enables traffic control between tiers
+
+### Private Endpoints
+- Private connectivity to Azure services
+- Public network access disabled
+- Prevents data exfiltration
+
+### Microsoft Defender for Cloud
+- Secure Score evaluation
+- Governance recommendations reviewed
+- Continuous security posture assessment
 
 ---
 
-## 📌 Purpose
+## Security Principles Demonstrated
 
-This project showcases practical Azure security skills for cloud security engineering roles.
+- Zero Trust architecture
+- Least privilege access
+- Defense in depth
+- Attack surface reduction
+- Network segmentation
 
 ---
 
-## 🙌 Outcome
+## Repository Contents
+
+| File | Description |
+|------|------------|
+| network-segmentation.md | Subnet design and NSG enforcement |
+| bastion-secure-access.md | Secure admin access with Bastion |
+| private-endpoints.md | Private service connectivity |
+| defender-for-cloud.md | Security posture evaluation |
+| roadmap.md | Planned security enhancements |
+
+---
+
+## Outcome
 
 Designed and implemented a segmented Azure network with Zero Trust principles, validated security posture using Defender for Cloud, and applied governance best practices.
